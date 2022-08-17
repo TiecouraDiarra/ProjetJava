@@ -3,6 +3,7 @@ package com.example.apiregion.service;
 import com.example.apiregion.modele.Region;
 import com.example.apiregion.repository.RegionRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RegionServiceImpl implements RegionService{
 
+    @Autowired
     private final RegionRepository regionRepository;
 
     @Override

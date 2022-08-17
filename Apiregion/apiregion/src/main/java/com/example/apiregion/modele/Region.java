@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Region")
@@ -22,11 +25,18 @@ public class Region {
     private String superficie;
     private String langue;
 
-    @ManyToOne
-    private Population population;
+    /*@ManyToOne
+    private Population population;*/
 
     @ManyToOne
     private Pays pays;
+
+    /*@ManyToMany
+    @JoinTable(
+            name = "region_population",
+            joinColumns = @JoinColumn(name = "id_region"),
+            inverseJoinColumns = {@JoinColumn(name = "id_population")})
+    List<Population> population = new ArrayList<>();*/
 
 
 }

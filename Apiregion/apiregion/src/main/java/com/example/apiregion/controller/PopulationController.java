@@ -22,7 +22,9 @@ public class PopulationController {
     @ApiOperation(value = "Ajouter une population donnée")
     @PostMapping("/ajouter")
     public Population create(@RequestBody Population population){
+        if(population==null)
         return populationService.Ajouter(population);
+        return population;
     }
 
     @ApiOperation(value = "Afficher la liste des populations")

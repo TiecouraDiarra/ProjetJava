@@ -1,9 +1,10 @@
 package com.example.apiregion.service;
 
 import com.example.apiregion.modele.Region;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface RegionService {
     Region creer(Region region);
     List<Region> Lire();

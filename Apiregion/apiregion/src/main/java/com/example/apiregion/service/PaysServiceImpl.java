@@ -13,10 +13,18 @@ import java.util.List;
 public class PaysServiceImpl implements PaysService{
 
     private final PaysRepository paysRepository;
+
     @Override
     public Pays Ajouter(Pays pays) {
         return paysRepository.save(pays);
     }
+
+    @Override
+    public Pays getNomPays(Pays pays) {
+
+        return paysRepository.findByNomPays(pays.getNomPays());
+    }
+
     @Override
     public List<Pays> Lire() {
         return paysRepository.findAll();

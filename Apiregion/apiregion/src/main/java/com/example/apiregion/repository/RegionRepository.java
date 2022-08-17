@@ -10,6 +10,6 @@ import java.util.List;
 public interface RegionRepository extends JpaRepository<Region,Long> {
 
     //@Query("Select idRegion,code_region,nom,domaineAct,superficie,langue FROM region,population WHERE population.id_population=region.id_population")
-    @Query(value = "SELECT id_region,code_region,nom,domaine_act,superficie,langue FROM region,population WHERE population.id_population=region.population_id_population", nativeQuery = true)
+    @Query(value = "Select id_region,code_region,nom,domaine_act,superficie,langue FROM region", nativeQuery=true)
     Iterable<Object[]> getRegionsSP ();
 }

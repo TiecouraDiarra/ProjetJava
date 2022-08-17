@@ -1,10 +1,16 @@
 package com.example.apiregion.controller;
 
+import com.example.apiregion.modele.Pays;
+import com.example.apiregion.modele.Population;
 import com.example.apiregion.modele.Region;
+import com.example.apiregion.repository.PopulationRepository;
+import com.example.apiregion.service.PaysService;
+import com.example.apiregion.service.PopulationService;
 import com.example.apiregion.service.RegionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,12 +21,43 @@ import java.util.List;
 @AllArgsConstructor
 @Api(value = "hello", description = "Gestion des regions")
 public class RegionController {
+    @Autowired
     private final RegionService regionService;
+    @Autowired
+    PaysService ps;
+
+    @Autowired
+    PopulationService popS;
 
     @ApiOperation(value = "Ajouter une region")
     @PostMapping("/ajouter")
-    public Region create(@RequestBody Region region){
+    public Region create(@RequestBody Region region, Population population){
+        Pays pays = ps.getNomPays(region.getPays());
+        if(pays==null || population==null){
+            ps.Ajouter(region.getPays());
+            //population.setRegion(region);
+            popS.Ajouter(population);
+        }
         return regionService.creer(region);
+
+        /*Pays p=new Pays();
+        p.setNomPays("test");
+        ps.Ajouter(p);
+        region.setPays(p);
+        Pays p = new Pays();
+        p.setNomPays(pays.getNomPays());
+        ps.Ajouter(p);
+        regionService.creer(region);*/
+
+        /*for (int i =0; i<region.getPopulation().size(); i++){
+            Population population = popS.getNb_population(region.getPopulation().get(i));
+            if (population==null){
+                popS.Ajouter(region.getPopulation().get(i));
+                //Population pp = popS.Ajouter(region.getPopulation().get(i));
+            }
+        }*/
+
+
     }
 
     @ApiOperation(value = "Afficher la liste des régions sans pays")

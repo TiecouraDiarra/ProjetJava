@@ -5,6 +5,7 @@ import com.example.apiregion.service.PaysService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Api(value = "hello", description = "Gestion des pays")
 public class PaysController {
+    @Autowired
     private final PaysService paysService;
 
     @ApiOperation(value = "Ajouter un pays")

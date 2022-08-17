@@ -9,6 +9,7 @@ import java.util.List;
 public interface PaysService {
 
     Pays Ajouter(Pays pays);
+    Pays getNomPays(Pays pays);
     Pays modifier(Long idPays, Pays pays);
     List<Pays> Lire();
     String supprimer(Long idPays);

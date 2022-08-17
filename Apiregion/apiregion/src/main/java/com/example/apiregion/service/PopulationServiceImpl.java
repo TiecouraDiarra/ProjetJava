@@ -1,5 +1,6 @@
 package com.example.apiregion.service;
 
+import com.example.apiregion.modele.Pays;
 import com.example.apiregion.modele.Population;
 import com.example.apiregion.repository.PopulationRepository;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,15 @@ public class PopulationServiceImpl implements PopulationService {
     public Population Ajouter(Population population) {
         return populationRepository.save(population);
     }
+
+
+
+    /*@Override
+    public Population getNb_population(Population population) {
+        return populationRepository.findByPopulation(population.getNb_population());
+    }*/
+
+
 
     @Override
     public Population modifier(Long idPopulation, Population population) {
