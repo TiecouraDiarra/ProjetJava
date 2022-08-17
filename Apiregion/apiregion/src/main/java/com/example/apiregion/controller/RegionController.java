@@ -33,11 +33,12 @@ public class RegionController {
     @PostMapping("/ajouter")
     public Region create(@RequestBody Region region, Population population){
         Pays pays = ps.getNomPays(region.getPays());
-        if(pays==null || population==null){
+        if(pays==null /*|| population==null*/){
             ps.Ajouter(region.getPays());
             //population.setRegion(region);
-            popS.Ajouter(population);
+            //popS.Ajouter(population);
         }
+        popS.Ajouter(population);
         return regionService.creer(region);
 
         /*Pays p=new Pays();
